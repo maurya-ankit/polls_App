@@ -1,0 +1,26 @@
+
+{% extends 'polls/base.html' %}
+{% load static %}
+{% block content %}
+<script>
+    const homenav=document.getElementById('result');
+    homenav.classList.add('active')
+const titlechange = document.getElementById('header_title').innerHTML='Poll App || Result Page'
+</script>
+
+<div>
+    <h1>Result for {{question.question_text}}</h1>
+    <div class="progress">
+    {% for choice in question.choice_set.all %}
+    {% if forloop.first %}
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:{{choice.votes}}%; ">{{choice.votes}} vote{{ choice.votes|pluralize }}</div>
+        {% else %}
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width:{{choice.votes}}%; ">{{choice.votes}} vote{{ choice.votes|pluralize }}</div>
+        {% endif %}
+    {% endfor %}
+</div>
+</div>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+
+{% endblock %}

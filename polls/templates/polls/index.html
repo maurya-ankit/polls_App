@@ -1,0 +1,28 @@
+
+
+{% extends 'polls/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<script>
+    const homenav=document.getElementById('home');
+    homenav.classList.add('active')
+    const titlechange = document.getElementById('header_title').innerHTML='Poll App || Index Page'
+
+</script>
+
+{% if latest_question_list %}
+<div class="list-group">
+    {% for question in latest_question_list %}
+    <a href="{% url 'polls:detail' question.id%}" class="list-group-item list-group-item-action" id="qlist">{{question.question_text}}</a>
+    <!--
+    advantage of above href syntax is for easy to change urls in future
+    */-->
+    {% endfor %}
+</div>
+{% else %}
+<p>No polls are Available.</p>
+{% endif %}
+
+{% endblock %}

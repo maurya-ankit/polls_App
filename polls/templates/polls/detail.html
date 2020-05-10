@@ -1,0 +1,32 @@
+
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block content %}
+<script>
+    const homenav=document.getElementById('polls');
+    homenav.classList.add('active')
+    const titlechange = document.getElementById('header_title').innerHTML='Poll App || Detail Page'
+</script>
+
+
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+    <legend>{{question.question_text}}</legend>
+        {% if error_message %}<p><strong>{{error_message}}</strong></p>
+        {% endif %}
+    {% for choice in question.choice_set.all %}
+    <div >
+    <input type="radio" name="choice" id="choice {{ forloop.counter }}" value="{{ choice.id }}">
+    <label for="choice{{ forloop.counter}}">{{choice.choice_text}}</label><br>
+    </div>
+    {% endfor%}
+
+    <input class ="btn btn-info btn-lg" type="submit" value="vote">
+</fieldset>
+</form>
+
+
+{% endblock %}
