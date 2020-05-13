@@ -24,14 +24,23 @@ SECRET_KEY = '64g3lv(ne-e)-^2h(nv^t3-3v+4nc7**-5)&+o(v_mhyrr9m^3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
+    # My Apps
+
     'register.apps.RegisterConfig',
-    "crispy_forms",
+
     'polls.apps.PollsConfig',
+
+    # 3rd Party PiP Installed Apps
+
+    "crispy_forms",
+
+    # Default apps
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -116,8 +125,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-   os.path.join(BASE_DIR,'polls/static')
+    os.path.join(BASE_DIR, 'polls/static')
 ]
-STATIC_ROOT = os.path.join(BASE_DIR,'static_cdn')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
