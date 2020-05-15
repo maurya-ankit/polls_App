@@ -10,7 +10,8 @@
 </script>
 <form class="form-group" method="post">
   {% csrf_token %}
-  {{form | crispy}}
+  {{ form|crispy }}
   <button class="btn btn-success" type="submit" name="button">Register</button>
 </form>
+
 {% endblock %}

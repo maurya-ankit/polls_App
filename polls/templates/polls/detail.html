@@ -7,6 +7,7 @@
     const homenav=document.getElementById('polls');
     homenav.classList.add('active')
     const titlechange = document.getElementById('header_title').innerHTML='Poll App || Detail Page'
+
 </script>
 
 
@@ -15,7 +16,8 @@
     {% csrf_token %}
     <fieldset>
     <legend>{{question.question_text}}</legend>
-        {% if error_message %}<p><strong>{{error_message}}</strong></p>
+        {% if error_message %}<p><strong>{{error_message}}</strong>
+            </p>
         {% endif %}
     {% for choice in question.choice_set.all %}
     <div >

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import Question, Choice
@@ -5,6 +7,7 @@ from django.urls import reverse
 from django.views import generic
 
 
+@login_required(login_url='register:signin')
 # Create your views here.
 def index(request):
     latest_question_list = Question.objects.order_by('id')
@@ -24,7 +27,7 @@ def index(request):
 
 # an efficient way to do it
 
-def detail(request, question_id, ):
+def detail(request, question_id ):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/detail.html', {'question': question})
 
@@ -56,5 +59,5 @@ def about(request):
 # def signup(request):
 #     return render(request, 'polls/signup.html')
 #
-def signin(request):
-    return render(request, 'polls/signin.html')
+# def signin(request):
+#     return render(request, 'polls/../register/templates/register/SignIn.html')

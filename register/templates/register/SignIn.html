@@ -71,21 +71,18 @@ span.psw {
   }
 }
 </style>
-
-<h2>Login Form</h2>
-
-<form action="{% url 'polls:index' %}" method="post">
+<form action="{#% url 'polls:index' %#}" method="POST">
   {% csrf_token %}
   <div class="imgcontainer">
     <img src="{% static 'polls/img/img_avatar2.png' %}" alt="Avatar" class="avatar">
   </div>
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label for="username"><b>Username</b></label>
+    <input id="username" type="text" placeholder="Enter Username" name="username" required autocomplete="off">
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="password" class="bmd-label-floating"><b>Password</b></label>
+    <input type="password" id="password" placeholder="Enter Password" name="password" required autocomplete="off">
 
     <button type="submit">Login</button>
     <label>
@@ -95,6 +92,7 @@ span.psw {
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
+      <span style="margin-left: 40%">New User? <a href="{%  url 'register:register' %}">Sign Up</a>Here</span>
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>

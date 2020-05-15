@@ -8,10 +8,9 @@
 <script>
     const homenav=document.getElementById('home');
     homenav.classList.add('active')
-    const titlechange = document.getElementById('header_title').innerHTML='Poll App || Index Page'
+    const titlechange = document.getElementById('header_title').innerHTML='Index Page'
 
 </script>
-
 {% if latest_question_list %}
 <div class="list-group">
     {% for question in latest_question_list %}
