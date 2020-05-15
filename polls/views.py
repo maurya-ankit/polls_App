@@ -26,17 +26,17 @@ def index(request):
 #     return render(request, 'polls/detail.html', {'question': question})
 
 # an efficient way to do it
-
+@login_required(login_url='register:signin')
 def detail(request, question_id ):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/detail.html', {'question': question})
 
-
+@login_required(login_url='register:signin')
 def result(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
 
-
+@login_required(login_url='register:signin')
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     try:
@@ -51,7 +51,7 @@ def vote(request, question_id):
         selected_choice.save()
     return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
-
+@login_required(login_url='register:signin')
 def about(request):
     return render(request, 'polls/about.html')
 
